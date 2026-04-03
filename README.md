@@ -150,6 +150,70 @@ Each generation picks a fresh set — no two scripts in a batch share the same e
 
 ---
 
+## Output
+
+When you run this skill in Claude, it generates a **fully interactive React slideshow** directly in the chat — no separate app or link needed. The slideshow is rendered live inside the Claude conversation window.
+
+Here's what the generated artifact looks like:
+
+```
+┌─────────────────────────────────────────────────────┐
+│  ☀ LIGHT          DOKKAI × MOCHIPIXEL               │
+│                   UGC Script Generator              │
+│         20 emotional hooks for novel readers        │
+├─────────────────────────────────────────────────────┤
+│  VIBE  [AUTO] [🛋️ Cozy] [⚡ Hype] [🎙️ Raw] …       │
+├─────────────────────────────────────────────────────┤
+│  [📖 Novel Dream] [🌙 Murakami] [💌 Fan Letter] …  │
+├─────────────────────────────────────────────────────┤
+│  🌙 The Murakami Effect  [🎬 Cinematic ·auto]       │
+│  [Novels]  [Aspiration → Reality]                   │
+├─────────────────────────────────────────────────────┤
+│  🎣  😤  ✨  📲                           2/4       │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│   Every time I tried to read,                       │
+│   I'd hit a kanji I didn't know.                    │
+│   I'd lose my place, lose my flow.                  │
+│   And just… give up.                                │
+│                                                     │
+├─────────────────────────────────────────────────────┤
+│  🎬 Recreate the frustration: close book…  [COPY]  │
+├─────────────────────────────────────────────────────┤
+│  ▶ VIEW FULL SCRIPT                                 │
+├─────────────────────────────────────────────────────┤
+│  🎬 SHOOT GUIDE         what to film for each slide │
+├─────────────────────────────────────────────────────┤
+│  🎬 CINEMATIC VIBE  ·  auto-matched                 │
+│  💡 Lighting  Golden hour or moody low-key setups   │
+│  ✂️ Pacing    Deliberate — 2–4 sec holds            │
+│  🎵 Audio     Instrumental score or ambient track   │
+│  🎞 Editing   Color grade everything. Smooth cuts   │
+│  ✍️ Text      Elegant, small, lower-third placement │
+│  🧱 Props     Every object in frame is intentional  │
+├─────────────────────────────────────────────────────┤
+│  🎣 HOOK   Close-up on Norwegian Wood on shelf,     │
+│            slightly dusty. Creator blows dust off…  │
+│  😤 PROBLEM  Creator opens book, hits unknown word, │
+│            loses place, closes it. Repeat 3x fast…  │
+│  ✨ RESULT  Screen record: Dokkai tap-to-lookup.    │
+│            Definition appears instantly. 10 pages…  │
+│  📲 CTA    Same shelf, bookmark now inside.         │
+│            Book + phone with Dokkai. End frame.     │
+├─────────────────────────────────────────────────────┤
+│  [🎵 TikTok] [▶️ YT Shorts] [📸 Reels] [𝕏 Twitter] │
+│  ⏱ 15–30 sec    ✂️ Fast cuts    🎵 Trending audio  │
+│  ✍️ Large text  📲 Comment CTA  🔁 Loop to hook    │
+└─────────────────────────────────────────────────────┘
+```
+![Dark mode 01](assets/dark-01.png)
+![Dark mode 02](assets/dark-02.png)
+![Light mode 01](assets/light-01.png)
+
+Every script tab, vibe pill, slide type button, and copy button is fully interactive. Switch scripts, change the vibe, flip between platforms — all live in the Claude window. Use the COPY buttons to pull individual slides or full scripts directly into your video editing app or notes.
+
+---
+
 ## UI Features
 
 | Feature | Description |
@@ -179,11 +243,6 @@ ugc-slideshow-generator/
 ```
 
 ---
-
-## Output
-![Dark mode 01](assets/dark-01.png)
-![Dark mode 02](assets/dark-02.png)
-![Light mode 01](assets/light-01.png)
 
 ## Built With
 
