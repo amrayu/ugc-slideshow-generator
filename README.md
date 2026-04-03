@@ -180,6 +180,11 @@ ugc-slideshow-generator/
 
 ---
 
+## Output
+![Dark mode 01](assets/dark-01.png)
+![Dark mode 02](assets/dark-02.png)
+![Light mode 01](assets/light-01.png)
+
 ## Built With
 
 This skill was developed by [MochiPixel LLC](https://mochipixel.io) to support UGC marketing for [Dokkai](https://mochipixel.io/dokkai), a Japanese reading companion app for iOS.
