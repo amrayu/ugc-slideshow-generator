@@ -27,16 +27,22 @@ const slides = [
     color: "#FF6B6B",       // unique per script, see color palette below
     tags: ["Category", "Emotion: X → Y"],
     slides: [
-      { type: "hook",    label: "🎣 HOOK",    text: "...", sub: "Director note" },
-      { type: "problem", label: "😤 PROBLEM", text: "...", sub: "Director note" },
-      { type: "result",  label: "✨ RESULT",  text: "...", sub: "Director note" },
-      { type: "cta",     label: "📲 CTA",     text: "...", sub: "Director note" },
+      {
+        type: "hook",
+        label: "🎣 HOOK",
+        text: "Script text here.\nUse \\n for line breaks.",
+        sub: "One-sentence visual note shown in slide preview bar.",
+        visual: "Full shoot direction: 2–4 sentences describing exactly what to film. Shot type, location, subject action, camera style, key visual detail. Write for a UGC creator who has never made a video. Example: 'Close-up on a dense kanji restaurant menu, no pictures. Creator's face just visible in background, expression slightly overwhelmed. Handheld camera, slightly shaky for authenticity. 2–3 seconds, no dialogue.'",
+      },
+      { type: "problem", label: "😤 PROBLEM", text: "...", sub: "...", visual: "..." },
+      { type: "result",  label: "✨ RESULT",  text: "...", sub: "...", visual: "..." },
+      { type: "cta",     label: "📲 CTA",     text: "...", sub: "...", visual: "..." },
     ],
   },
 ];
 ```
 
-There is NO standalone `typeColors` object. Slide type colors are defined inside the theme object `t` (see below).
+The `visual` field is displayed in the **Shoot Guide** panel — a per-script section that shows all 4 slides' visual directions stacked in a color-coded list. If a slide has no `visual` field, the UI falls back to `sub`. Always generate `visual` — never leave it empty.
 
 ---
 
