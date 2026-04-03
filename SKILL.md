@@ -1,7 +1,7 @@
 ---
 name: ugc-slideshow-generator
 description: >
-  Generate UGC (user-generated content) marketing slideshow scripts for short-form video (YouTube Shorts, TikTok, Instagram Reels). Each script follows a Hook → Problem → Result → CTA structure designed to trigger emotion and drive conversions. Use this skill whenever the user asks for UGC scripts, short video content, marketing slideshows, social media ad copy, or emotional storytelling for a product or app. Also trigger when the user says things like "make me UGC content", "write short video scripts", "give me hooks for [product]", "create ad scripts", or "marketing content for [audience]". This skill produces an interactive React artifact with copyable slides, director's notes, and production tips — and is fully parameterized for any product and target demographic.
+  Generate UGC (user-generated content) marketing slideshow scripts for short-form video (YouTube Shorts, TikTok, Instagram Reels, X/Twitter). Each script follows a Hook → Problem → Result → CTA structure designed to trigger emotion and drive conversions. Use this skill whenever the user asks for UGC scripts, short video content, marketing slideshows, social media ad copy, or emotional storytelling for a product or app. Also trigger when the user says things like "make me UGC content", "write short video scripts", "give me hooks for [product]", "create ad scripts", or "marketing content for [audience]". This skill produces an interactive React artifact with copyable slides, a vibe system, per-slide shoot guides, and platform-specific production tips — fully parameterized for any product and target demographic.
 ---
 
 # UGC Slideshow Generator
@@ -50,57 +50,92 @@ CTA      — A low-friction next step. Usually "link in bio" or a question for c
 Every slide must include two visual guidance fields:
 
 - `sub` — one-sentence visual note (shown in the slide preview bar)
-- `visual` — full shoot direction (shown in the Shoot Guide panel). This should be 2–4 sentences describing exactly what to film or photograph: shot type, location, subject action, camera style, what's on screen, and any key visual contrast or detail. Write it like a director briefing a UGC creator who has never made a video before. Be specific — "close-up on a dense kanji menu, creator's face just visible in background looking overwhelmed" beats "show a menu."
+- `visual` — full shoot direction (shown in the Shoot Guide panel). 2–4 sentences: shot type, location, subject action, camera style, key visual detail. Write like a director briefing a UGC creator who has never made a video. Be specific.
+
+### Vibe assignment
+Every script must include a `vibe` field. Assign one of these based on the script's emotional angle:
+
+| Vibe | Key traits | Best for |
+|------|-----------|----------|
+| `cozy` | Warm light, slow cuts, intimate, lo-fi | Comfort, aspiration, lifestyle |
+| `hype` | Fast cuts, beat-synced, high energy, bold | Progress, urgency, excitement |
+| `raw` | One-take, no music, talking head, authentic | Confessions, reframes, adult learners |
+| `cinematic` | Color graded, deliberate pacing, emotional score | Literary, emotional peaks, fan content |
+| `educational` | Clean light, text overlays, measured pace | Explainers, methodology, how-it-works |
 
 ---
 
 ## Step 3: Output as Interactive React Artifact
 
-Render the scripts as a `.jsx` artifact with:
+Render the scripts as a `.jsx` artifact with all of the following:
 
-- **Script selector tabs** — one button per script, colored distinctly
-- **Slide navigator** — Hook / Problem / Result / CTA tabs with color-coded types:
-  - Hook → yellow `#FFE66D`
-  - Problem → red `#FF6B6B`
-  - Result → green `#6EE7B7`
-  - CTA → blue `#93C5FD`
-- **Phone-style preview pane** — large centered text, dark background
-- **Director's note bar** — italic, below the preview
-- **Copy button** — per slide and per full script
-- **"View Full Script" expandable section** — all 4 slides in a grid
-- **Production Tips panel** — pacing, audio, format, branding guidelines
+### Required UI components:
+- **Dark/light toggle** — top-right of header
+- **Vibe override row** — AUTO pill + 5 vibe pills (🛋️ Cozy / ⚡ Hype / 🎙️ Raw / 🎬 Cinematic / 📚 Educational), positioned between header and script selector
+- **Script selector tabs** — one per script, each with unique accent color
+- **Vibe badge** on script meta bar — shows active vibe with `·auto` or `·override`
+- **Slide navigator** — Hook / Problem / Result / CTA tabs, color-coded
+- **Phone-style preview pane** — large centered text
+- **Director's note bar** — `sub` field + COPY button
+- **View Full Script** — expandable grid, all 4 slides
+- **🎬 Shoot Guide panel** — contains in order:
+  1. Panel header
+  2. **Vibe Notes row** — 6 specs for the active vibe: Lighting, Pacing, Audio, Editing, Text Style, Props
+  3. Slide-by-slide visual directions (color-coded by slide type)
+  4. **Platform Tips footer** — tabbed TikTok / YouTube Shorts / Reels / X
+
+### Vibe system implementation:
+```js
+// Default vibe lookup by script ID
+const defaultVibes = { 1: "hype", 2: "raw", ... }; // assign per script
+
+// State
+const [vibeOverride, setVibeOverride] = useState(null);
+
+// Active vibe
+const activeVibeKey = vibeOverride || defaultVibes[script.id] || "raw";
+const activeVibe = vibes[activeVibeKey];
+```
+
+The `vibes` object defines each vibe's 6 production specs. See `references/artifact-template.md` for the full definitions.
+
+### Platform tips:
+Four tabs — TikTok, YouTube Shorts, Instagram Reels, X/Twitter — each with 6 specs: Duration, Cuts, Audio, Text, CTA, Loop.
+
+**X/Twitter color fix:** X uses `#000000` which is invisible on dark backgrounds. Use adaptive colors:
+- Dark mode: `#cccccc`
+- Light mode: `#333333`
+
+Apply this to both the tab button and the tips grid label color.
 
 ### Visual design rules:
-- Dark terminal aesthetic by default (`#0a0a0a` bg, monospace font) with a light warm-parchment mode (`#F4F1ED`)
-- **Dark/light toggle button** is required — positioned top-right of header
-- **NEVER use webkit gradient text on the H1** — it breaks on React state toggle. Use plain `color: dark ? "#ffffff" : "#0D0B0A"`
-- All colors must route through the theme object `t` — no hardcoded hex values in JSX
-- Each script has a unique accent color (not purple gradients — vary widely)
-- Use `'Courier New'` or a serif for headers — avoid Inter/Roboto/system fonts
-- High contrast required: slide body text `fontWeight: 700` min, supporting text `600`+
-- Labeled `[PRODUCT NAME] × [STUDIO/BRAND]` in the header
+- Dark terminal aesthetic by default (`#0a0a0a` bg, monospace font) + light warm-parchment mode (`#F4F1ED`)
+- **NEVER use webkit gradient text on the H1** — use plain `color: dark ? "#ffffff" : "#0D0B0A"`
+- All colors through theme object `t` — no hardcoded hex values in JSX
+- Each script has a unique accent color — vary widely, no purple gradients
+- Font: `'Courier New'` or serif for headers — avoid Inter/Roboto
+- Body text `fontWeight: 700` min, supporting text `600`+
+- Header: `[PRODUCT] × [BRAND]`
 - Footer: `[BRAND] — FOR INTERNAL USE`
 
-See `references/artifact-template.md` for the full theme object, font weight table, toggle button code, and H1 rendering fix.
+See `references/artifact-template.md` for theme object, vibe definitions, font weight table, and H1 fix.
 
 ---
 
 ## Step 4: Summary After the Artifact
 
-After the artifact, write a brief plain-text summary:
-
-- A table: Script name | Angle | Core Emotion
-- 2–3 sentences on which scripts to **test first** and why
+- Table: Script name | Angle | Vibe | Core Emotion
+- 2–3 sentences on which scripts to test first and why
 - Any notes on angles especially strong for this product/audience combo
 
 ---
 
 ## Updating Scripts
 
-If the user asks to:
-- **Add more scripts** — generate new ones with fresh emotional angles not already used, append to the existing artifact
-- **Change the product** — re-parameterize all scripts and regenerate
-- **Change the demo** — re-skin the emotional language, keep the angles, regenerate
-- **Remove manga/gaming/etc.** — filter out irrelevant references and regenerate cleanly
+- **Add more** — fresh angles, full `sub` + `visual` + `vibe` on every slide, append to artifact
+- **Change product/demo** — re-parameterize all scripts, regenerate
+- **Add platform variants** — platform tips are in the UI; no new scripts needed
+- **Change vibe defaults** — update `defaultVibes` lookup in the artifact
+- **Remove/filter content** — strip irrelevant references, regenerate
 
 Always regenerate the full artifact on updates — don't describe changes in prose.
