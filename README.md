@@ -103,7 +103,6 @@ ugc-slideshow-generator/
 After one prompt, you get a fully interactive React artifact like this:
 
 ![Dark mode](assets/darkmode-01.png)
-![Dark mode more](assets/darkmode-02.png)
 ![Light mode](assets/lightmode-01.png)
 
 ---
