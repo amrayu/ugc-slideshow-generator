@@ -68,13 +68,17 @@ Render the scripts as a `.jsx` artifact with:
 - **Production Tips panel** — pacing, audio, format, branding guidelines
 
 ### Visual design rules:
-- Dark terminal aesthetic (`#080808` background, monospace font)
+- Dark terminal aesthetic by default (`#0a0a0a` bg, monospace font) with a light warm-parchment mode (`#F4F1ED`)
+- **Dark/light toggle button** is required — positioned top-right of header
+- **NEVER use webkit gradient text on the H1** — it breaks on React state toggle. Use plain `color: dark ? "#ffffff" : "#0D0B0A"`
+- All colors must route through the theme object `t` — no hardcoded hex values in JSX
 - Each script has a unique accent color (not purple gradients — vary widely)
 - Use `'Courier New'` or a serif for headers — avoid Inter/Roboto/system fonts
+- High contrast required: slide body text `fontWeight: 700` min, supporting text `600`+
 - Labeled `[PRODUCT NAME] × [STUDIO/BRAND]` in the header
 - Footer: `[BRAND] — FOR INTERNAL USE`
 
-See `references/artifact-template.md` for the full React component structure to follow.
+See `references/artifact-template.md` for the full theme object, font weight table, toggle button code, and H1 rendering fix.
 
 ---
 
