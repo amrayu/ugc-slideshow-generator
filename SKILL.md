@@ -47,7 +47,10 @@ CTA      — A low-friction next step. Usually "link in bio" or a question for c
 ```
 
 ### Director's notes
-Every slide must include a `sub` (director's note): a concrete visual suggestion for what to show on screen. These are for the UGC creator, not Claude. Keep them brief and actionable.
+Every slide must include two visual guidance fields:
+
+- `sub` — one-sentence visual note (shown in the slide preview bar)
+- `visual` — full shoot direction (shown in the Shoot Guide panel). This should be 2–4 sentences describing exactly what to film or photograph: shot type, location, subject action, camera style, what's on screen, and any key visual contrast or detail. Write it like a director briefing a UGC creator who has never made a video before. Be specific — "close-up on a dense kanji menu, creator's face just visible in background looking overwhelmed" beats "show a menu."
 
 ---
 
