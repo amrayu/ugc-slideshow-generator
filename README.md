@@ -153,49 +153,9 @@ ugc-slideshow-generator/
 
 ## Output Example
 
-```
-┌─────────────────────────────────────────────────────┐
-│  ☀ LIGHT          DOKKAI × MOCHIPIXEL               │
-│                   UGC Script Generator              │
-│                   20 emotional hooks                │
-├─────────────────────────────────────────────────────┤
-│  [📖 Novel Dream] [🌙 Murakami] [💌 Fan Letter] …  │
-├─────────────────────────────────────────────────────┤
-│  🌙 The Murakami Effect   [Novels] [Aspiration→Reality] │
-├─────────────────────────────────────────────────────┤
-│  🎣  😤  ✨  📲                           2/4       │
-├─────────────────────────────────────────────────────┤
-│                                                     │
-│   Every time I tried to read,                       │
-│   I'd hit a kanji I didn't know.                    │
-│   I'd lose my place, lose my flow.                  │
-│   And just… give up.                                │
-│                                                     │
-├─────────────────────────────────────────────────────┤
-│  🎬 Recreate the frustration: dictionary open…     │
-│                                          [COPY]     │
-├─────────────────────────────────────────────────────┤
-│  🎬 SHOOT GUIDE              what to film for each slide │
-├──────────────────────────────────────────────────────┤
-│ 🎣 HOOK    Close-up on Norwegian Wood on shelf,      │
-│            slightly dusty. Creator blows dust off,  │
-│            looks at camera: sheepish expression...  │
-├──────────────────────────────────────────────────────┤
-│ 😤 PROBLEM  Creator opens book, hits unknown word,   │
-│            picks up phone, loses place, closes book. │
-│            Repeat 3x fast. No words needed...       │
-├──────────────────────────────────────────────────────┤
-│ ✨ RESULT   Screen record: Dokkai open, tap kanji,   │
-│            definition appears instantly, continue.  │
-│            Timer overlay: 10 pages in one session.. │
-├──────────────────────────────────────────────────────┤
-│ 📲 CTA     Return to shelf — same book, bookmark    │
-│            now inside. Creator pulls it with purpose.│
-│            Book + phone with Dokkai. End frame.     │
-├──────────────────────────────────────────────────────┤
-│  ⏱ 2–4s/slide  📱 9:16  🎵 Lo-fi  ✍️ Bold text     │
-└─────────────────────────────────────────────────────┘
-```
+![Dark mode 01](assets/darkmode-001.png)
+![Dark mode 02](assets/darkmode-002.png)
+![Light mode 01](assets/lightmode-001.png)
 
 ---
 
