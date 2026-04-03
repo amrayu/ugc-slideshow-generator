@@ -1,5 +1,4 @@
 # ugc-slideshow-generator
-# ugc-slideshow-generator
 
 A Claude skill that generates emotional, conversion-focused UGC video scripts for short-form content — packaged as an interactive React slideshow you can use, copy, and hand off to creators.
 
