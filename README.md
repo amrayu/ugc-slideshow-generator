@@ -102,27 +102,9 @@ ugc-slideshow-generator/
 
 After one prompt, you get a fully interactive React artifact like this:
 
-```
-┌─────────────────────────────────────────────┐
-│  DOKKAI × MOCHIPIXEL                        │
-│  UGC Script Generator                       │
-│  14 emotional hooks for novel readers       │
-├─────────────────────────────────────────────┤
-│  [📖 Novel Dream] [🌙 Murakami] [🔀 Trans…] │
-├─────────────────────────────────────────────┤
-│  🎣  PROBLEM  ✨  📲              2/4        │
-├─────────────────────────────────────────────┤
-│                                             │
-│   Every time I tried to read,               │
-│   I'd hit a kanji I didn't know.            │
-│   I'd lose my place, lose my flow.          │
-│   And just… give up.                        │
-│                                             │
-├─────────────────────────────────────────────┤
-│  🎬 Re-enact the frustration: close book…  │
-│                                    [COPY]   │
-└─────────────────────────────────────────────┘
-```
+![Dark mode](assets/darkmode-01.png)
+![Dark mode more](assets/darkmode-02.png)
+![Light mode](assets/lightmode-01.png)
 
 ---
 
