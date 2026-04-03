@@ -1,8 +1,8 @@
 # ugc-slideshow-generator
 
-A Claude skill that generates emotional, conversion-focused UGC video scripts for short-form content — packaged as an interactive React slideshow with full visual shoot direction for every slide.
+A Claude skill that generates emotional, conversion-focused UGC video scripts for short-form content — packaged as an interactive React slideshow with full visual shoot direction, vibe presets, and platform-specific production tips.
 
-Designed for YouTube Shorts, TikTok, and Instagram Reels. Works for any product or audience.
+Designed for YouTube Shorts, TikTok, Instagram Reels, and X. Works for any product or audience.
 
 ---
 
@@ -12,11 +12,12 @@ Give Claude a product and a target audience. The skill generates a batch of 5–
 
 - Slide-by-slide preview (Hook → Problem → Result → CTA)
 - One-click copy per slide or per full script
-- **Two-layer visual guidance on every slide** — a quick director's note and a full shoot guide
+- **Two-layer visual guidance** — quick director's note + full shoot guide per slide
 - **🎬 Shoot Guide panel** — per-script, color-coded visual directions for all 4 slides
+- **Vibe system** — auto-matched per script, globally overridable
+- **Platform tips** — tabbed TikTok / YouTube Shorts / Reels / X guidance
 - Dark / light mode toggle
 - Color-coded slide types
-- Universal production tips (format, pacing, audio, branding)
 
 ---
 
@@ -69,30 +70,56 @@ Every slide is generated with two levels of shoot direction:
 ### `sub` — Quick Director's Note
 A single-sentence cue shown in the slide preview bar. Fast reference while reviewing scripts.
 
-```
-🎬 Close-up on a dense kanji menu, no pictures. Creator's face just visible in background.
-```
-
 ### `visual` — Full Shoot Guide
-A 2–4 sentence production brief shown in the **🎬 Shoot Guide** panel at the bottom of each script. Written like a director briefing a UGC creator who has never made a video. Covers:
+A 2–4 sentence production brief covering shot type, location, subject action, camera style, pacing, and the one key visual detail that makes the shot work. Shown in the **🎬 Shoot Guide** panel.
 
-- **Shot type** — close-up, talking head, screen record, POV, montage, flat lay
-- **Location & props** — what physical objects or environments to use
-- **Subject action** — what the creator does on screen, moment by moment
-- **Camera style** — handheld, static, slow zoom, screen record overlay
-- **Pacing & feel** — how fast to cut, whether to use music or silence
-- **Key visual detail** — the one thing that makes the shot work
+---
 
-### Example (Script: The Murakami Effect)
+## Vibe System
 
-| Slide | Shoot Guide |
-|-------|-------------|
-| 🎣 Hook | Close-up on a Japanese copy of Norwegian Wood on a shelf, slightly dusty. Creator's hand reaches in, picks it up, blows dust off the cover. Look at the camera with a sheepish expression. Warm, slightly dim shelf lighting. The dust is the story — don't skip it. |
-| 😤 Problem | Creator opens the book, starts reading, hits a word, picks up phone to search it, loses their place, scrolls back, loses focus, closes the book with a soft thud. Repeat this cycle fast — 3 seconds total. No words needed. Every learner will recognize this loop immediately. |
-| ✨ Result | Screen record: Dokkai open to a Japanese text. Tap a kanji — definition slides in from bottom instantly. Dismiss, continue reading. Tap another — same speed. The rhythm is unbroken. Overlay a subtle timer in corner showing 10 pages read in one session. Speed and flow are the product. |
-| 📲 CTA | Return to the same shelf from the hook — same book, same angle, but now a bookmark is sticking out partway through. Creator pulls it off the shelf again, this time with purpose. Holds it up. Nods. End frame: book in one hand, phone with Dokkai open in the other. |
+Every script has a **default vibe** auto-matched to its emotional angle. A global override row lets you force all scripts to one vibe for a consistent batch look.
 
-The Shoot Guide is **per-script** — it updates automatically when you switch between scripts in the artifact.
+### The 5 Vibes
+
+| Vibe | Visual Language | Best For |
+|------|----------------|----------|
+| 🛋️ **Cozy** | Warm tungsten light, slow cuts, blankets, steam, worn books | Novel Dream, Comfort Read, Photobook |
+| ⚡ **Hype** | Bright contrast, fast cuts synced to beat drops, bold text | Speed Reader, Live Stream Gap, Drama Fan |
+| 🎙️ **Raw** | Natural daylight, one-take energy, no music, room ambiance | Late Starter, Grammar Grind Lie, Quiet Flex |
+| 🎬 **Cinematic** | Golden hour, color graded, deliberate pacing, emotional score | Murakami Effect, Interview Cry, Concert MC |
+| 📚 **Educational** | Clean even light, text overlays, measured pace, diagrams | 3 Writing Systems, Immersion Myth, Lonely Dictionary |
+
+### How It Works in the UI
+
+- **AUTO** pill — each script uses its own default vibe (shown as `·auto` on the badge)
+- **Override pills** — selecting a vibe forces all scripts to that style (shown as `·override`)
+- **Vibe Notes panel** — appears at the top of the Shoot Guide with 6 production specs: Lighting, Pacing, Audio, Editing, Text Style, Props
+- Clicking an active override pill deselects it, returning to AUTO
+
+### Default Vibe Assignments
+
+| Vibe | Scripts |
+|------|---------|
+| 🛋️ Cozy | Novel Dream, 5 Min Reader, Hardcover Guilt, Comfort Read, Photobook |
+| ⚡ Hype | Drama Fan, Speed Reader, Live Stream Gap, Subtitle Delay |
+| 🎙️ Raw | Tokyo Tourist, JLPT Trap, Grammar Grind Lie, Late Starter, Quiet Flex |
+| 🎬 Cinematic | Murakami Effect, Translation Betrayal, Midnight Epiphany, Rereader, First Sentence, Fan Letter, Interview Cry, Concert MC |
+| 📚 Educational | 3 Writing Systems, Lonely Dictionary, Immersion Myth |
+
+---
+
+## Platform Tips
+
+The bottom of the Shoot Guide has a tabbed platform selector with production guidance specific to each platform:
+
+| Platform | Duration | Key Difference |
+|----------|----------|----------------|
+| 🎵 **TikTok** | 15–30 sec | Fast cuts, trending audio, beat-synced text, comment-bait CTA |
+| ▶️ **YouTube Shorts** | 30–60 sec | Slightly longer setup okay, subtitles help, subscribe bug |
+| 📸 **Instagram Reels** | 15–45 sec | Aesthetic transitions, save/share CTA, brand-forward |
+| 𝕏 **X / Twitter** | Under 30 sec | Must read without sound, RT-bait CTA, fewer cuts |
+
+Each tab shows 6 specs: Duration, Cuts, Audio, Text, CTA, and Loop guidance.
 
 ---
 
@@ -115,11 +142,11 @@ Each generation picks a fresh set — no two scripts in a batch share the same e
 
 | You say | What happens |
 |---------|-------------|
-| "Add 10 more" | Generates new scripts with unused angles, full visual guidance included |
+| "Add 10 more" | New scripts with unused angles, full visual + vibe guidance |
 | "Now do this for [new product]" | Re-parameterizes everything, fresh generation |
 | "Focus only on [audience segment]" | Filters angles and re-generates |
+| "Add scripts for [niche]" | Audience-specific angles (e.g. oshikatsu fans, adult learners) |
 | "Remove anything about [topic]" | Strips irrelevant references, regenerates cleanly |
-| "Add scripts for [niche audience]" | Generates angles specific to that community (e.g. oshikatsu fans, adult learners) |
 
 ---
 
@@ -127,14 +154,16 @@ Each generation picks a fresh set — no two scripts in a batch share the same e
 
 | Feature | Description |
 |---------|-------------|
-| ☀ / ☾ Toggle | Dark mode (default) and light mode — warm parchment palette |
+| ☀ / ☾ Toggle | Dark mode (default) and light warm-parchment light mode |
+| VIBE row | AUTO + 5 override pills — forces a global vibe or uses per-script defaults |
 | Script tabs | One button per script, each with a unique accent color |
+| Vibe badge | Shows active vibe on each script with `·auto` or `·override` indicator |
 | Slide navigator | Color-coded tabs: Hook (yellow), Problem (red), Result (green), CTA (blue) |
-| Slide preview | Large centered text in a phone-style pane |
-| Director's note bar | Quick `sub` note below the preview, with a COPY button |
-| View Full Script | Expandable grid showing all 4 slides with copy buttons |
-| 🎬 Shoot Guide | Per-script panel with full visual direction for all 4 slide types |
-| Production tips | Universal format/pacing/branding reference in the footer of the Shoot Guide |
+| Slide preview | Large centered text, phone-style pane |
+| Director's note bar | Quick `sub` note below preview + COPY button |
+| View Full Script | Expandable grid — all 4 slides with copy buttons |
+| 🎬 Shoot Guide | Vibe Notes panel + per-slide visual directions (color-coded by type) |
+| Platform tabs | TikTok / YouTube Shorts / Reels / X — 6 production specs each |
 
 ---
 
@@ -146,16 +175,8 @@ ugc-slideshow-generator/
 └── references/
     ├── emotional-angles.md           # Full angle library with execution notes
     └── artifact-template.md          # React component blueprint, theme object,
-                                      # font weight standards, and shoot guide spec
+                                      # vibe system, font weights, shoot guide spec
 ```
-
----
-
-## Output Example
-
-![Dark mode 01](assets/darkmode-001.png)
-![Dark mode 02](assets/darkmode-002.png)
-![Light mode 01](assets/lightmode-001.png)
 
 ---
 
